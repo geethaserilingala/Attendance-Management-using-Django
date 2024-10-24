@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <style>
+        body {
+            background-image: url("{% static 'images/Time-and-attendance.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+        .navbar {
+            background-color: #003366; /* Dark Blue */
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important; /* White text */
+        }
+        .nav-link:hover {
+            color: #cccccc !important; /* Light grey text on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Your Attendance</h2>
+        <p>Attendance Percentage: {{ attendance_percentage }}%</p>
+        <p>Total Attendance Records: {{ attendance_count }}</p>
+        <p>Present Days: {{ present_count }}</p>
+        <a href="{% url 'submit_attendance' %}" class="btn btn-primary">Submit Attendance</a>
+    </div>
+</body>
+</html>
